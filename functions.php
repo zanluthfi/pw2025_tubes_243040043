@@ -1,6 +1,8 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'database_tubes_pw2025');
 
+
+// ambil data
 function query($query) {
     global $conn;
     $result = mysqli_query($conn, $query);
@@ -10,4 +12,6 @@ function query($query) {
     }
     return $rows;
 }
+
+
 ?>
