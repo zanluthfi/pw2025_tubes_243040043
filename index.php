@@ -1,6 +1,11 @@
 <?php
 require 'functions.php';
-$cars = query("SELECT * FROM cars");
+
+$display = fetch("SELECT * FROM cars");
+
+if (isset($_POST["submit"])) {
+    $display = search($_POST);
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +19,15 @@ $cars = query("SELECT * FROM cars");
 
 <body>
     <h1>Cars Data</h1>
+    <br>
+    <a href="add.php">add data</a>
     <br><br>
+
+    <form action="" method="post">
+        <input type="text" name="search" placeholder="search data here..." autocomplete="off">
+        <button type="submit" name="submit">search</button>
+    </form>
+    <br>
     <table border="1" cellspacing="0" cellpadding="10">
         <tr>
             <td>No</td>
@@ -27,7 +40,7 @@ $cars = query("SELECT * FROM cars");
             <td>Action</td>
         </tr>
         <?php $i = 1;
-        foreach ($cars as $row) : ?>
+        foreach ($display as $row) : ?>
             <tr>
                 <td><?= $i++ ?></td>
                 <td><?= $row["model"] ?></td>
@@ -36,11 +49,11 @@ $cars = query("SELECT * FROM cars");
                 <td><?= $row["topSpeed"] ?></td>
                 <td><?= $row["price"] ?></td>
                 <td>
-                    <img src="img/<?= $row["image"] ?>" alt="">
+                    <img src="img/<?= $row["image"] ?>" alt="" height="100px">
                 </td>
                 <td>
-                    <a href="">change</a> | 
-                    <a href="">delete</a>
+                    <a href="change.php?cars_id=<?= $row["cars_id"] ?>">change</a> |
+                    <a href="delete.php?cars_id=<?= $row["cars_id"] ?>" onclick="return confirm('sure?')">delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
