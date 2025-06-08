@@ -91,7 +91,7 @@ function search($data)
     topSpeed LIKE '%$search%' OR
     price LIKE '%$search%'";
 
-    fetch($query);
+    return fetch($query);
 }
 
 // upload gambar 

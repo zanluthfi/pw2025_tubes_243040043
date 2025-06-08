@@ -39,19 +39,19 @@ if(isset($_POST["submit"])) {
             </li>
             <li>
                 <label for="launchYear">Launch Year :</label>
-                <input type="text" name="launchYear" id="launchYear" autocomplete="off" require>
+                <input type="number" step="1" min="0" name="launchYear" id="launchYear" autocomplete="off" require>
             </li>
             <li>
                 <label for="horsepower">Horsepower :</label>
-                <input type="text" name="horsepower" id="horsepower" autocomplete="off" require>
+                <input type="number" step="1" min="0" name="horsepower" id="horsepower" autocomplete="off" require>
             </li>
             <li>
                 <label for="topSpeed">Top Speed :</label>
-                <input type="text" name="topSpeed" id="topSpeed" autocomplete="off" require>
+                <input type="number" step="1" min="0" name="topSpeed" id="topSpeed" autocomplete="off" require>
             </li>
             <li>
                 <label for="price">Price :</label>
-                <input type="text" name="price" id="price" autocomplete="off" require>
+                <input type="number" step="1" min="0" name="price" id="price" autocomplete="off" require>
             </li>
             <li>
                 <label for="image">image :</label>

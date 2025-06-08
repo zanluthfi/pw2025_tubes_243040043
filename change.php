@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
 
     <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" value="<?= $id ?>" name="id">
-        <input type="text" value="<?= $image ?>" name="oldImage">
+        <input type="hidden" value="<?= $image ?>" name="oldImage">
         <ul>
             <li>
                 <label for="model">Model :</label>
