@@ -64,7 +64,13 @@ function change($data)
     $horsepower = htmlspecialchars($data["horsepower"]);
     $topSpeed = htmlspecialchars($data["topSpeed"]);
     $price = htmlspecialchars($data["price"]);
-    $image = htmlspecialchars($data["image"]);
+    $oldImage = $data["oldImage"];
+
+    if($_FILES['image']['error'] === 4 ) {
+        $image = $oldImage;
+    } else {
+        $image = upload();
+    }
 
     $query = "UPDATE `cars`
     SET `model` = '$model', `launchYear` = '$launchYear', `horsepower` = '$horsepower', `topSpeed` = '$topSpeed', `price` = '$price', `image` = '$image'
@@ -91,8 +97,8 @@ function search($data)
 // upload gambar 
 function upload()
 {
-    $fileName = $_FILES['image']['name'];
-    $tmp = $_FILES['image']['tmp'];
+    $fullName = pathinfo($_FILES['image']['name']);
+    $tmp = $_FILES['image']['tmp_name'];
     $error = $_FILES['image']['error'];
     $fileSize = $_FILES['image']['size'];
 
@@ -108,8 +114,7 @@ function upload()
 
     // cek tipe file yg diup
     $allowed = ['jpg', 'jpeg', 'png'];
-    $fileExtension = explode('.', $fileName);
-    $fileExtension = strtolower(end($fileExtension));
+    $fileExtension = strtolower($fullName['extension']);
     if (!in_array($fileExtension, $allowed)) {
         echo "
             <script>
@@ -130,7 +135,8 @@ function upload()
     }
 
     // upload 
-    move_uploaded_file($tmp, 'img/' . $fileName);
+    $randomName = uniqid() . '.' . $fileExtension;
+    move_uploaded_file($tmp, 'img/' . $randomName);
 
-    return $fileName;
+    return $randomName;
 }

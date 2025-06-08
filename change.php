@@ -10,7 +10,7 @@ $launchYear = htmlspecialchars($cars["launchYear"]);
 $horsepower = htmlspecialchars($cars["horsepower"]);
 $topSpeed = htmlspecialchars($cars["topSpeed"]);
 $price = htmlspecialchars($cars["price"]);
-$image = htmlspecialchars($cars["image"]);
+$image = $cars["image"];
 
 if (isset($_POST["submit"])) {
 
@@ -43,8 +43,9 @@ if (isset($_POST["submit"])) {
 <body>
     <h1>Change Data</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" value="<?= $id ?>" name="id">
+        <input type="text" value="<?= $image ?>" name="oldImage">
         <ul>
             <li>
                 <label for="model">Model :</label>
@@ -68,7 +69,8 @@ if (isset($_POST["submit"])) {
             </li>
             <li>
                 <label for="image">image :</label>
-                <input type="text" name="image" id="image" value="<?= $image ?>" autocomplete="off" require>
+                <img src="img/<?= $image ?>" alt="">
+                <input type="file" name="image" id="image" >
             </li>
             <li>
                 <button type="submit" name="submit">change Data</button>
