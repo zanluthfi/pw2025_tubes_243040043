@@ -30,7 +30,7 @@ function add($data)
         echo "
             <script>
                 alert('add data failed');
-                document.location.href = 'index.php';
+                document.location.href = 'dashboard.php';
             </script>
         ";
         return false;
