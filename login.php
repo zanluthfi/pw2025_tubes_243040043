@@ -1,32 +1,32 @@
 <?php
 require 'functions.php';
 
-if (isset($_POST["submit"])) {
+if (isset($_POST['submit'])) {
 
-    if (add($_POST) > 0) {
+    if ($_POST['username'] == 'admin' && $_POST['password'] == 123) {
         echo "
             <script>
-                alert('succeed');
+                alert('login succeed');
                 document.location.href = 'dashboard.php';
             </script>
         ";
     } else {
         echo "
             <script>
-                alert('failed');
-                document.location.href = 'dashboard.php';
+                alert('login failed');
             </script>
         ";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
@@ -52,39 +52,17 @@ if (isset($_POST["submit"])) {
     </nav>
 
     <div class="container-sm bg-dark p-5">
-        <h1>Add Data</h1>
+        <h1>Login Admin</h1>
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post">
             <div class="mb-3">
-                <label for="model" class="form-label">Model</label>
-                <input type="text" class="form-control" name="model" id="model" require>
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" require>
             </div>
 
             <div class="mb-3">
-                <label for="launchYear" class="form-label">Launch Year</label>
-                <input type="number" class="form-control" name="launchYear" id="launchYear" require>
-            </div>
-
-            <div class="mb-3">
-                <label for="horsepower" class="form-label">Horsepower (hp)</label>
-                <input type="number" class="form-control" name="horsepower" id="horsepower" require>
-            </div>
-
-            <div class="mb-3">
-                <label for="topSpeed" class="form-label">Top Speed (km/h)</label>
-                <input type="number" class="form-control" name="topSpeed" id="topSpeed" require>
-            </div>
-
-            <div class="mb-3">
-                <label for="price" class="form-label">Price ($)</label>
-                <input type="number" class="form-control" name="price" id="price" require>
-            </div>
-
-            <div class="mb-3">
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" name="image" id="image" require>
-                </div>
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" require>
             </div>
 
             <button type="submit" name="submit" class="btn btn-secondary">Submit</button>

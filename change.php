@@ -81,17 +81,17 @@ if (isset($_POST["submit"])) {
             </div>
 
             <div class="mb-3">
-                <label for="horsepower" class="form-label">Horsepower</label>
+                <label for="horsepower" class="form-label">Horsepower (hp)</label>
                 <input type="number" class="form-control" name="horsepower" id="horsepower" value="<?= $horsepower ?>" require>
             </div>
 
             <div class="mb-3">
-                <label for="topSpeed" class="form-label">Top Speed</label>
+                <label for="topSpeed" class="form-label">Top Speed (km/h)</label>
                 <input type="number" class="form-control" name="topSpeed" id="topSpeed" value="<?= $topSpeed ?>" require>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
+                <label for="price" class="form-label">Price ($)</label>
                 <input type="number" class="form-control" name="price" id="price" value="<?= $price ?>" require>
             </div>
 
@@ -103,7 +103,7 @@ if (isset($_POST["submit"])) {
                 </div>
             </div>
 
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-secondary">Submit</button>
         </form>
     </div>
 

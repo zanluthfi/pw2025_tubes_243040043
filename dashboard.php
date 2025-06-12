@@ -19,6 +19,7 @@ if (isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferrari</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-secondary text-bg-dark">
@@ -35,7 +36,7 @@ if (isset($_POST["submit"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">log out</a>
                     </li>
 
                     <li class="nav-item">
@@ -44,7 +45,7 @@ if (isset($_POST["submit"])) {
                 </ul>
 
                 <form class="d-flex" role="search" method="post">
-                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search" autocomplete="off" value="<?= $searchValue ?>"/>
+                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search" autocomplete="off" value="<?= $searchValue ?>" />
 
                     <button class="btn btn-secondary" type="submit" name="submit">Search</button>
                 </form>
@@ -53,35 +54,68 @@ if (isset($_POST["submit"])) {
     </nav>
 
     <div class="container-sm">
-        <?php foreach ($display as $card) : ?>
-            <ul class="list-group list-group-horizontal-sm m-2">
-                <li class="list-group-item">
-                    <img src="img/<?= $card["image"] ?>" alt="img" height="50px">
-                </li>
+        <table class="table table-striped table-hover table-dark">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">No</th>
 
-                <li class="list-group-item text-center"><?= $card["model"] ?></li>
+                    <th scope="col">Image</th>
 
-                <li class="list-group-item text-center"><?= $card["launchYear"] ?></li>
+                    <th scope="col">Model</th>
 
-                <li class="list-group-item text-center"><?= $card["horsepower"] ?>Hp</li>
+                    <th scope="col">Launched</th>
 
-                <li class="list-group-item text-center"><?= $card["topSpeed"] ?>Km/h</li>
+                    <th scope="col">Horsepower</th>
 
-                <li class="list-group-item text-center">$<?= $card["price"] ?></li>
+                    <th scope="col">Top Speed</th>
 
-                <li class="list-group-item">
-                    <a href="change.php?cars_id=<?= $card["cars_id"] ?>">
-                        <button type="button" class="btn btn-warning">Change</button>
-                    </a>
-                </li>
+                    <th scope="col">Price</th>
 
-                <li class="list-group-item">
-                    <a href="delete.php?cars_id=<?= $card["cars_id"] ?>">
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </a>
-                </li>
-            </ul>
-        <?php endforeach; ?>
+                    <th scope="col"></th>
+
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php $i = 1;
+                foreach ($display as $card) : ?>
+                    <tr class="text-center">
+                        <th scope="row"><?= $i++ ?></th>
+
+                        <td>
+                            <img src="img/<?= $card["image"] ?>" alt="img" height="50px">
+                        </td>
+
+                        <td><?= $card["model"] ?></td>
+
+                        <td><?= $card["launchYear"] ?></td>
+
+                        <td><?= $card["horsepower"] ?>hp</td>
+
+                        <td><?= $card["topSpeed"] ?>km/h</td>
+
+                        <td>$<?= $card["price"] ?></td>
+
+                        <td>
+                            <a href="change.php?cars_id=<?= $card["cars_id"] ?>">
+                                <button type="button" class="btn btn-warning">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="delete.php?cars_id=<?= $card["cars_id"] ?>">
+                                <button type="button" class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

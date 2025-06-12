@@ -1,4 +1,5 @@
 <?php
+// koneksi database
 $conn = mysqli_connect('localhost', 'root', '', 'database_tubes_pw2025');
 
 // ambil data
@@ -66,7 +67,7 @@ function change($data)
     $price = htmlspecialchars($data["price"]);
     $oldImage = $data["oldImage"];
 
-    if($_FILES['image']['error'] === 4 ) {
+    if ($_FILES['image']['error'] === 4) {
         $image = $oldImage;
     } else {
         $image = upload();
@@ -79,7 +80,7 @@ function change($data)
     mysqli_query($conn, $query);
 }
 
-// cari data 
+// cari data
 function search($data)
 {
     $search = $data['search'];
@@ -125,7 +126,7 @@ function upload()
     }
 
     // cek ukuran
-    if($fileSize > 2 * 1024 * 1024) {
+    if ($fileSize > 2 * 1024 * 1024) {
         echo "
             <script>
                 alert('uploaded file too large');

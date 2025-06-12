@@ -1,6 +1,7 @@
 <?php
 require 'functions.php';
 
+// display default 
 $display = fetch("SELECT * FROM cars");
 
 $searchValue = "";
@@ -38,7 +39,7 @@ if (isset($_POST["submit"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="dashboard.php">dashboard</a>
+                        <a class="nav-link active" aria-current="page" href="login.php">log in</a>
                     </li>
                 </ul>
 
